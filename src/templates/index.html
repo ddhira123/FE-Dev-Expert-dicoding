@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Reliable Restaurants List for You.">
+		<link
+			rel="preload"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+			as="style"
+			onload="this.rel='stylesheet'"
+		/>
+		<link
+			rel="preload"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+			as="style"
+			onload="this.rel='stylesheet'"
+		/>
+		<title>RestoList</title>
+	</head>
+	<body id="home">
+		<a href="#main" class="skip-link">Skip to content</a>
+		<header class="appbar">
+			<nav class="navbar">
+				<div class="nav-wrapper container">
+					<div class="left">
+						<button id="hamburger" href="#">☰</button>
+						<a href="#" class="brand-logo">RestoList</a>
+					</div>
+					<ul class="topnav">
+						<li><a href="/"><i class="material-icons">home</i> Home</a></li>
+						<li><a href="#"><i class="material-icons">favorite</i> Favorite</a></li>
+						<li><a href="https://www.linkedin.com/in/dhanadhira/"><i class="material-icons">info</i> About Us</a></li>
+					</ul>
+				</div>
+			</nav>
+			<ul class="sidenav">
+				<li><a href="/"><i class="material-icons">home</i> Home</a></li>
+				<li><a href="#"><i class="material-icons">favorite</i> Favorite</a></li>
+				<li><a href="https://www.linkedin.com/in/dhanadhira/"><i class="material-icons">info</i> About Us</a></li>
+			</ul>
+		</header>
+		
+		<main id="main">
+			<div class="jumbotron">
+				<div class="container" role="img" aria-label="Welcome to Restolist. Find the reliable restaurant list here" alt="Welcome to Restolist. Find the reliable restaurant list here">
+					<h1 class="light-text">Welcome to Restolist</h1>
+					<p>Find the reliable restaurant list here!</p>
+				</div>
+			</div>
+			<div class="container" id="list-wrapper">
+				<h2 class="text-center">Explore the Restaurants</h1>
+				<div class="list"></div>
+			</div>	
+		</main>
+		<custom-footer></custom-footer>
+	</body>
+</html>

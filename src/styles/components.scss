@@ -1,0 +1,199 @@
+@import "variables.scss";
+
+* {
+	box-sizing: border-box;
+
+	&:focus {
+		outline: 3px solid #000;
+	}
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+	background-color: $palette-bg-color;
+}
+
+h1 {
+	font-size: 4em;
+}
+
+h2 {
+	font-size: 3.1em;
+}
+
+h3 {
+	font-size: 2.2em;
+}
+
+main {
+	top: 0;
+}
+
+nav {
+	color: #fff;
+	background-color: $palette-dark-orange;
+	width: 100%;
+	height: 56px;
+	line-height: 56px;
+
+	a {
+		text-decoration: none;
+		color: #fff;
+
+		&.brand-logo {
+			position: absolute;
+			color: #fff;
+			display: inline-block;
+			font-size: 26px;
+			padding: 0;
+			text-decoration: none;
+		}
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+
+		li {
+			a {
+				display: block;
+				color: #fff;
+				padding: 0 15px;
+				text-decoration: none;
+
+				* {
+					vertical-align: middle;
+				}
+
+				&:hover,
+				&:focus {
+					background-color: rgba(0, 0, 0, 0.1);
+				}
+			}
+		}
+	}
+}
+
+p {
+	font-size: 1.3em;
+	font-weight: 300;
+}
+
+.card {
+	position: relative;
+	margin: 0.5rem 0;
+	background-color: #fff;
+	-webkit-transition: -webkit-box-shadow 0.25s;
+	transition: -webkit-box-shadow 0.25s;
+	transition: box-shadow 0.25s;
+	transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
+	border-radius: 5px;
+	max-width: 360px;
+	height: 400px;
+
+	.card-image {
+		max-height: 60%;
+		overflow: hidden;
+		position: relative;
+
+		img {
+			display: block;
+			border-radius: 2px 2px 0 0;
+			position: relative;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			height: 200px;
+		}
+	}
+
+	.card-content {
+		padding: 20px;
+		border-radius: 0 0 2px 2px;
+
+		p {
+			margin: 0;
+		}
+		.card-title {
+			display: block;
+			line-height: 32px;
+			margin-bottom: 8px;
+			font-size: 1.5em;
+			font-weight: lighter;
+
+			i {
+				line-height: 32px;
+			}
+		}
+	}
+
+	.card-badge {
+		position: absolute;
+		width: 100%;
+		text-align: left;
+		vertical-align: middle;
+		align-items: center;
+		padding: 0.2em 0.8em;
+		color: #fff;
+		z-index: 2;
+		background-color: $palette-light-orange;
+
+		.loc,
+		.material-icons {
+			position: relative;
+			vertical-align: middle;
+			font-size: 1.1em;
+		}
+	}
+}
+
+.card:hover {
+	-webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+		0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container {
+	margin: 0 auto;
+}
+
+.jumbotron {
+	position: relative;
+	margin: 0;
+	height: auto;
+	overflow: hidden;
+	display: block !important;
+
+	.container {
+		margin: 0 auto;
+
+		h1 {
+			margin: 0;
+		}
+	}
+}
+
+.light-text {
+	font-weight: lighter;
+}
+
+.row {
+	display: grid;
+	margin: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.topnav {
+	overflow: visible;
+}

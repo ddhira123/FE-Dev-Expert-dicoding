@@ -1,0 +1,56 @@
+@import "components.scss";
+@import "responsive.scss";
+@import "skip_link.scss";
+
+#home {
+	$star-size: 1.5rem;
+	$star-color: #a8a8a8;
+	$star-background: #fc0;
+
+	.jumbotron {
+		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+			url("../public/images/heros/hero-image_4.jpg");
+		background-color: #358222;
+		background-size: cover;
+
+		h1,
+		p {
+			color: #fff;
+		}
+	}
+
+	#list-wrapper {
+		margin: auto;
+		margin-top: 5vw;
+
+		.list {
+			margin-top: 5vw;
+		}
+
+		.col {
+			overflow: hidden;
+		}
+	}
+
+	.Stars {
+		$percent: calc(var(--rating) / 5 * 100%);
+
+		display: inline-block;
+		font-size: $star-size;
+		font-family: Times; // make sure ★ appears correctly
+		line-height: 1;
+		margin: 8px 0;
+
+		&::before {
+			content: "★★★★★";
+			letter-spacing: 3px;
+			background: linear-gradient(
+				90deg,
+				$star-background $percent,
+				$star-color $percent
+			);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	}
+}

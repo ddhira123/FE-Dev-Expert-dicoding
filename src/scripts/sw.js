@@ -1,17 +1,17 @@
 /* eslint-disable no-restricted-globals */
-self.addEventListener('install', (event) => {
+self.addEventListener('install', () => {
 	console.log('Installing Service Worker ...');
    
 	// TODO: Caching App Shell Resource
 });
    
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', () => {
 	console.log('Activating Service Worker ...');
    
 	// TODO: Delete old caches
 });
    
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', () => {
 	console.log(event.request);
    
 	event.respondWith(fetch(event.request));

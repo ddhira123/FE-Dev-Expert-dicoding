@@ -1,6 +1,6 @@
 name: Lint
 
-on: [git branch -drpush, pull_request]
+on: [push, pull_request]
 
 jobs:
   eslint:

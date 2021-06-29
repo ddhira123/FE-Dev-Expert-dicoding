@@ -6,6 +6,11 @@
 		width: 90%;
 	}
 
+	.restaurant-detail {
+		width: 100%;
+		height: 100%;
+	}
+
 	.row {
 		grid-template-columns: 1fr;
 		grid-gap: 10px;
@@ -14,18 +19,6 @@
 
 	.jumbotron {
 		padding: 3em 0;
-	}
-
-	h1 {
-		font-size: 3em;
-	}
-
-	h2 {
-		font-size: 2.1em;
-	}
-
-	h3 {
-		font-size: 1.2em;
 	}
 
 	.ellipsis {
@@ -38,42 +31,16 @@
 	}
 }
 
-// medium
-@media only screen and (min-width: $med-screen-min-width) {
-	.container {
-		width: 85%;
-	}
-	.row {
-		grid-template-columns: 1fr 1fr;
-		grid-gap: 10px;
-		padding: 10px;
-	}
-
-	.jumbotron {
-		padding: 4em 0;
-	}
-
-	.ellipsis {
-		display: -webkit-box;
-		white-space: normal;
-		-webkit-line-clamp: 3;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		font-size: 2.8vw;
-	}
-}
-
 // smaller than large screen
 @media only screen and (max-width: 992px) {
 	.sidenav {
-		width: 200px;
+		width: 60vw;
 		height: 100vh;
 		position: absolute;
-		transform: translate(-200px, 0);
+		transform: translate(-60vw, 0);
 		transition: transform 0.3s ease-in-out;
 		background-color: #fff;
-		z-index: 999;
+		z-index: 9999;
 		left: 0;
 		top: 0;
 		margin: 0;
@@ -94,6 +61,11 @@
 			a:hover {
 				background-color: rgba(0, 0, 0, 0.1);
 			}
+		}
+
+		&-logo {
+			width: 100%;
+			height: auto;
 		}
 	}
 
@@ -136,12 +108,139 @@
 			display: none;
 		}
 	}
+
+	.restaurant-detail {
+		img {
+			width: 100%;
+			height: 60vw;
+		}
+
+		&__cuisines {
+			font-size: 20px;
+		}
+
+		&__overview {
+			display: block;
+
+			&__right {
+				* {
+					font-size: 20px;
+				}
+				.rating-title {
+					display: none;
+				}
+
+				button {
+					padding: 10px;
+				}
+			}
+		}
+
+		&__tabs {
+			&__menu {
+				width: 100%;
+				display: block;
+
+				&-foods,
+				&-beverages {
+					padding: 0 5%;
+					border: none;
+				}
+
+				li {
+					font-size: 18px;
+				}
+			}
+
+			&__review {
+				width: 100%;
+
+				&-item {
+					&__reviewer {
+						font-size: 20px;
+						font-weight: 450;
+					}
+
+					&__date {
+						font-size: 18px;
+						font-weight: 300;
+					}
+
+					&__review {
+						font-size: 20px;
+						font-weight: 360;
+					}
+				}
+			}
+		}
+	}
+}
+
+// medium
+@media only screen and (min-width: $med-screen-min-width) {
+	.container {
+		width: 85%;
+	}
+
+	.row {
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 10px;
+		padding: 10px;
+	}
+
+	.jumbotron {
+		height: 50vh;
+		width: auto;
+	}
+
+	.ellipsis {
+		display: -webkit-box;
+		white-space: normal;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-size: 2.8vw;
+	}
+
+	.sidenav {
+		width: 40vw;
+		transform: translate(-40vw, 0);
+
+		li {
+			a {
+				font-size: 20px;
+			}
+		}
+	}
+
+	.restaurant-detail {
+		&__overview {
+			&__left {
+				p {
+					font-size: 20px;
+				}
+			}
+		}
+
+		&__tabs {
+			&__menu {
+				li {
+					font-size: 20px;
+				}
+			}
+		}
+	}
 }
 
 // large
 @media only screen and (min-width: $large-screen-min-width) {
 	.container {
 		width: 80%;
+	}
+
+	.restaurant-detail {
+		width: 70%;
 	}
 
 	.row {

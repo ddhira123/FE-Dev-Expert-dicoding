@@ -1,43 +1,35 @@
-import * as data from "../../../DATA.json";
-
-let inner = '<div class="row">';
-
-data.restaurants.forEach((item) => {
-	inner += `<div class="col">
-                <div class="card">
-                    <div class="card-image">
-                        <div class="card-badge">
-                            <i class="material-icons">place</i>
-                            <span class="loc">${item.city}</span>
-                        </div>
-                        <img src="${item.pictureId}" alt="This is the image of restaurant ${item.name} in ${item.city}">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title">${item.name}</span>
-                        <div 
-                            class="Stars" 
-                            style="--rating: ${item.rating};" 
-                            role="img" 
-                            aria-label="Rating of this restaurant is ${item.rating} out of 5." 
-                            alt="Rating of this restaurant is ${item.rating} out of 5.">
-                        </div>
-                        <span style="display:inline-block;margin-bottom:8px;">(Rating: ${item.rating}/5)</span>
-                        <p class="ellipsis">${item.description}</p>
-                    </div>
-                </div>
-            </div>`;
-});
-inner += "</div>";
-document.querySelector("div.list").innerHTML = inner;
+import DataSource from "../../globals/data-source";
+import { createRestaurantItemTemplate } from "../templates/template-builder";
 
 const Home = {
 	async render() {
-		return `
-        <h2>Now Playing Page</h2>
-      `;
+		let inner = `
+            <div class="jumbotron" id="home-banner">
+				<div 
+					class="container" 
+					role="img" 
+					aria-label="Selamat datang di RestoList. Temukan Restoran favorit Anda disini.">
+					<h1 class="light-text">Selamat datang di Restolist</h1>
+					<p>Temukan daftar restoran yang terpercaya!</p>
+				</div>
+			</div>
+			<div class="container" id="list-wrapper">
+				<h2 class="text-center">Jelajahi Resto-resto berikut.</h1>
+				<div class="list row"></div>`;
+
+		inner += "</div>";
+		return inner;
 	},
 
-	async afterRender() {},
+	async afterRender() {
+		const restaurants = await DataSource.restaurantList();
+		const listElement = document.querySelector(".list");
+		let innerList = "";
+		restaurants.forEach(restaurant => {
+			innerList += createRestaurantItemTemplate(restaurant);
+		});
+		listElement.innerHTML = innerList;
+	},
 };
 
 export default Home;

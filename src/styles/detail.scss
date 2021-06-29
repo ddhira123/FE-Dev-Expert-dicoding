@@ -1,0 +1,179 @@
+.restaurant-detail {
+    width: 60%;
+
+    h1 {
+        margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-weight: 500;
+    }
+
+    &__banner {
+        width: 100%;
+        height: 60vh;
+    }
+
+    &__wrapper {
+        align-items: center;
+        position: relative;
+        height: auto;
+        margin: 0 auto;
+        padding: 25px;
+    }
+
+    &__overview {
+        display: grid;
+        grid-template-columns: auto max-content;
+
+        &__left {
+            p {
+                margin: 0;
+                margin-top: 10px;
+            }
+
+            h1 {
+                margin: 0;
+            }
+        }
+
+        &__right {
+            button {
+                display: inline-flex;
+                justify-content: center; /* center the content horizontally */
+                align-items: center;
+                font-size: 18px;
+                min-height: 44px;
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+
+            .rating {
+                &-number {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    &__cuisines {
+        &-badge {
+            border: 2px solid darkgrey;
+            color: $palette-dark-orange;
+            border-radius: 16px;
+            padding: 8px 12px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+    }
+
+    &__tabs {
+        width: 100%;
+        margin: 50px auto;
+
+        &-labels {
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+
+        &-label {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+
+            label {
+                font-size: 24px;
+                font-weight: normal;
+                flex: 1;
+
+                h2 {
+                    margin: 0;
+                }
+            }
+        }
+
+        &-label:hover,
+        label:hover {
+            color: $palette-dark-orange;
+            cursor: pointer;
+        }
+
+        &__menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            * {
+                justify-self: center;
+            }
+
+            li {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+
+            &-foods {
+                border-right: 1px solid #d4d4d4;
+                width: 100%;
+                padding: 0 15%;
+            }
+            &-beverages {
+                width: 100%;
+                padding: 0 15%;
+            }
+        }
+
+        &__review {
+            &-item {
+                &__reviewer {
+                    font-size: 18px;
+                    font-weight: 420;
+                }
+
+                &__date {
+                    font-size: 14px;
+                    font-weight: 300;
+                }
+
+                &__review {
+                    font-size: 16px;
+                    font-weight: 360;
+                }
+            }
+        }
+
+        &__tab-content {
+            display: none;
+            width: 100%;
+            border-top: 2px solid #aaa;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #tab1:checked ~ #tab-content1,
+        #tab2:checked ~ #tab-content2 {
+            display: block;
+        }
+
+        #tab1:checked ~ ul #tab-1,
+        #tab2:checked ~ ul #tab-2 {
+            border-bottom: 5px solid $palette-dark-orange;
+            box-sizing: border-box;
+        }
+
+        #tab1:checked ~ ul #tab-1 #label1,
+        #tab2:checked ~ ul #tab-2 #label2 {
+            color: $palette-dark-orange;
+        }
+    }
+}

@@ -7,7 +7,7 @@
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "test": "karma start",
-    "lint": "eslint ./src",
+    "lint": "eslint ./src --no-fix",
     "lint:fix": "eslint ./src --fix"
   },
   "keywords": [],
@@ -49,6 +49,7 @@
     "regenerator-runtime": "^0.13.5",
     "sass": "^1.32.13",
     "sass-loader": "^7.0.0",
+    "serviceworker-webpack-plugin": "^1.0.1",
     "url-loader": "^4.1.1"
   }
 }

@@ -2,11 +2,11 @@ import API_ENDPOINT from "../../globals/api-endpoint";
 
 const createRestaurantItemTemplate = (restaurant) => `
     
-    <div class="card movie-item hoverable">
+    <div class="card restaurant-item hoverable">
         <a href="/#/detail/${restaurant.id}">
             <div class="card-image">
                 <div class="card-badge">
-                    <i class="material-icons">place</i>
+                    <i class="fa fa-lg fa-map-marker" aria-hidden="true"></i>
                     <span class="loc">${restaurant.city}</span>
                 </div>
                 <img 
@@ -59,10 +59,29 @@ const multiElementListBuilder = ({data, func}) => {
 	return result;
 } 
 
-const favoriteButtonSelector = statusFavorite => 
-	statusFavorite 
-		? `<i class="material-icons red">favorite</i> Hapus dari Favorit` 
-		: `<i class="material-icons">favorite_border</i> Simpan ke Favorit`;
+const createFavoriteButtonTemplate = () => `
+    <button aria-label="simpan ke favorit" id="btn-favorite" class="like">
+        <i class="fa fa-lg fa-heart-o" aria-hidden="true"></i> Simpan ke Favorit
+    </button>
+    `;
+       
+const createFavoritedButtonTemplate = () => `
+    <button aria-label="hapus dari favorit" id="btn-favorite" class="liked">
+        <i class="fa fa-lg fa-heart" aria-hidden="true"></i> Hapus dari Favorit
+    </button>
+    `;
+
+const createSuccessSaveAlert = (restaurantName) => 
+	alert(`Berhasil Menyimpan Restoran ${restaurantName} ke Favorit.`);
+
+const createFailedSaveAlert = (restaurantName) => 
+	alert(`Gagal Menyimpan Restoran ${restaurantName} ke Favorit.`);
+
+const createSuccessDeleteAlert = (restaurantName) => 
+	alert(`Berhasil Mennghapus Restoran ${restaurantName} dari Favorit.`);
+
+const createFailedDeleteAlert = (restaurantName) => 
+	alert(`Gagal Menghapus Restoran ${restaurantName} dari Favorit.`);
 
 const createRestaurantDetailTemplate = (restaurant) => {
 	console.log(restaurant);
@@ -83,7 +102,6 @@ const createRestaurantDetailTemplate = (restaurant) => {
 		func:menuItemsTemplate
 	});
 	const fullAddress = `${restaurant.address}, ${restaurant.city}`;
-	const isFavorite = false;
 	return `
         <img 
             class="restaurant-detail__banner" 
@@ -104,10 +122,8 @@ const createRestaurantDetailTemplate = (restaurant) => {
                         aria-label="Rating restoran ini adalah ${restaurant.rating} per 5." 
                         alt="${restaurant.rating}/5">
                     </div>
-                    <span class="rating-number">${restaurant.rating}</span> <br/>
-                    <button id="btn-favorite">
-                        ${favoriteButtonSelector(isFavorite)}
-                    </button>
+                    <span class="rating-number">${restaurant.rating}</span>
+                    <div class="btn-favorite-container"></div>
                 </div>
                 <div class="restaurant-detail__cuisines">
                     <h2>Kategori Masakan</h2>
@@ -117,9 +133,13 @@ const createRestaurantDetailTemplate = (restaurant) => {
                 </div>
             </div>
             <div class="restaurant-detail__tabs">
-                <input type="radio" checked name="tabs" id="tab1">
+                <input type="radio" checked name="tabs" id="tab0">
+                <input type="radio" name="tabs" id="tab1">
                 <input type="radio" name="tabs" id="tab2">
                 <ul class="restaurant-detail__tabs-labels" role="tablist">
+                    <li class="restaurant-detail__tabs-label" id="tab-0">
+                        <label for="tab0" id="label0"><h2>Deskripsi</h2></label>
+                    </li>
                     <li class="restaurant-detail__tabs-label" id="tab-1">
                         <label for="tab1" id="label1"><h2>Menu</h2></label>
                     </li>
@@ -127,6 +147,11 @@ const createRestaurantDetailTemplate = (restaurant) => {
                         <label for="tab2" id="label2"><h2>Ulasan</h2></label>
                     </li>
                 </ul>
+                <div id="tab-content0" class="restaurant-detail__tabs__tab-content">
+                    <p class="restaurant-detail__tabs__description">
+                        ${restaurant.description}
+                    </p>
+                </div>
                 <div id="tab-content1" class="restaurant-detail__tabs__tab-content">
                     <div class="restaurant-detail__tabs__menu">
                         <div class="restaurant-detail__tabs__menu-foods">
@@ -148,4 +173,35 @@ const createRestaurantDetailTemplate = (restaurant) => {
         </div>
     `};
 
-export {createRestaurantDetailTemplate, createRestaurantItemTemplate};
+const errorTemplate = async () => `
+    <div class="error-template text-center">
+        <h3>Terjadi Kesalahan</h3>
+    </div>
+`;
+
+const showLoading = (loader) => {
+	loader.classList.add("display");
+
+	setTimeout(() => {
+		loader.classList.remove("display");
+	}, 2000);
+}
+
+// hiding loading 
+const hideLoading = (loader) => {
+	loader.classList.remove("display");
+}
+
+export {
+	createRestaurantDetailTemplate, 
+	createRestaurantItemTemplate, 
+	createFavoriteButtonTemplate,
+	createFavoritedButtonTemplate,
+	createFailedSaveAlert,
+	createSuccessSaveAlert,
+	createFailedDeleteAlert,
+	createSuccessDeleteAlert,
+	errorTemplate,
+	showLoading,
+	hideLoading
+};

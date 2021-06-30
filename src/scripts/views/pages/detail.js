@@ -1,5 +1,6 @@
-import DataSource from "../../globals/data-source";
+import DataSource from "../../data/data-source";
 import UrlParser from "../../routes/url-parser";
+import FavoriteButtonInitiator from "../../utils/favorite-button-initiator";
 import { createRestaurantDetailTemplate } from "../templates/template-builder";
 
 const Detail = {
@@ -12,6 +13,10 @@ const Detail = {
 		const restaurant = await DataSource.detailRestaurant(url.id);
 		const restaurantContainer = document.querySelector('#detail');
 		restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+		FavoriteButtonInitiator.init({
+			favoriteButtonContainer: document.querySelector('.btn-favorite-container'),
+			restaurant
+		});
 	},
 };
 

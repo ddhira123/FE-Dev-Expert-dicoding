@@ -6,19 +6,66 @@
 		width: 90%;
 	}
 
+	.card {
+		min-width: 100%;
+	}
+
+	#home-banner {
+		height: 40vh;
+		width: 100%;
+
+		.container {
+			top: 35%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-25%);
+			-webkit-transform: translateX(-50%) translateY(-25%);
+			-moz-transform: translateX(-50%) translateY(-25%);
+		}
+
+		h1 {
+			font-size: 2.8em;
+		}
+
+		p {
+			font-size: 22px;
+			margin: 2vw 0;
+		}
+	}
+
 	.restaurant-detail {
 		width: 100%;
 		height: 100%;
+
+		&__overview {
+			p {
+				font-size: 20px;
+			}
+		}
+
+		&__tabs {
+			&-label {
+				display: inline-block;
+				padding: 3vw 4vw;
+				cursor: pointer;
+				min-height: 44px;
+
+				label {
+					font-weight: normal;
+					flex: 1;
+
+					h2 {
+						margin: 0;
+						font-size: 5vw;
+					}
+				}
+			}
+		}
 	}
 
-	.row {
+	.restaurants {
 		grid-template-columns: 1fr;
 		grid-gap: 10px;
 		padding: 10px;
-	}
-
-	.jumbotron {
-		padding: 3em 0;
 	}
 
 	.ellipsis {
@@ -117,21 +164,23 @@
 
 		&__cuisines {
 			font-size: 20px;
+			margin-top: 50px;
 		}
 
 		&__overview {
 			display: block;
 
 			&__right {
-				* {
-					font-size: 20px;
-				}
 				.rating-title {
 					display: none;
 				}
 
-				button {
-					padding: 10px;
+				* {
+					font-size: 20px;
+				}
+
+				.stars {
+					font-size: 30px;
 				}
 			}
 		}
@@ -148,8 +197,13 @@
 				}
 
 				li {
-					font-size: 18px;
+					font-size: 16px;
 				}
+			}
+
+			&__description {
+				line-height: 27px;
+				font-size: 18px;
 			}
 
 			&__review {
@@ -157,17 +211,17 @@
 
 				&-item {
 					&__reviewer {
-						font-size: 20px;
+						font-size: 18px;
 						font-weight: 450;
 					}
 
 					&__date {
-						font-size: 18px;
+						font-size: 16px;
 						font-weight: 300;
 					}
 
 					&__review {
-						font-size: 20px;
+						font-size: 16px;
 						font-weight: 360;
 					}
 				}
@@ -177,26 +231,31 @@
 }
 
 // medium
-@media only screen and (min-width: $med-screen-min-width) {
+@media only screen and (min-width: $med-screen-min-width) and (max-width: 992px) {
 	.container {
 		width: 85%;
 	}
 
-	.row {
+	#home-banner {
+		.container {
+			top: 35%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-25%);
+			-webkit-transform: translateX(-50%) translateY(-25%);
+			-moz-transform: translateX(-50%) translateY(-25%);
+		}
+	}
+
+	.restaurants {
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 10px;
 		padding: 10px;
 	}
 
-	.jumbotron {
-		height: 50vh;
-		width: auto;
-	}
-
 	.ellipsis {
 		display: -webkit-box;
 		white-space: normal;
-		-webkit-line-clamp: 3;
+		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -215,11 +274,19 @@
 	}
 
 	.restaurant-detail {
+		img {
+			width: 100%;
+			height: 50vw;
+		}
+
 		&__overview {
-			&__left {
-				p {
-					font-size: 20px;
-				}
+			p,
+			span {
+				font-size: 3.5vw;
+			}
+
+			.stars {
+				font-size: 40px;
 			}
 		}
 
@@ -234,16 +301,92 @@
 }
 
 // large
-@media only screen and (min-width: $large-screen-min-width) {
+@media only screen and (min-width: $extra-large-screen-min-width) {
 	.container {
 		width: 80%;
 	}
 
 	.restaurant-detail {
 		width: 70%;
+
+		&__overview {
+			p,
+			span {
+				font-size: 2vw;
+			}
+
+			.stars {
+				font-size: 40px;
+			}
+		}
 	}
 
-	.row {
+	.restaurants {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 2vw;
+		padding: 10px;
+	}
+}
+
+@media only screen and (min-width: $large-screen-min-width) and (max-width: 1199px) {
+	.container {
+		width: 85%;
+	}
+
+	.restaurant-detail {
+		width: 80%;
+
+		&__overview {
+			p,
+			span {
+				font-size: 20px;
+			}
+
+			.stars {
+				font-size: 40px;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: $large-screen-min-width) {
+	.container {
+		width: 80%;
+	}
+
+	#home-banner {
+		height: 60vh;
+		width: 100%;
+	}
+
+	.restaurant-detail {
+		&__tabs {
+			&__description {
+				font-size: 20px;
+				line-height: 30px;
+			}
+			&__review {
+				&-item {
+					&__reviewer {
+						font-size: 18px;
+						font-weight: 420;
+					}
+
+					&__date {
+						font-size: 14px;
+						font-weight: 300;
+					}
+
+					&__review {
+						font-size: 16px;
+						font-weight: 360;
+					}
+				}
+			}
+		}
+	}
+
+	.restaurants {
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-gap: 2vw;
 		padding: 10px;

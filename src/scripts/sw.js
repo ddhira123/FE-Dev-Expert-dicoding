@@ -1,19 +1,16 @@
+import CacheHelper from "./utils/cache-helper";
+
 /* eslint-disable no-restricted-globals */
-self.addEventListener('install', () => {
-	console.log('Installing Service Worker ...');
-   
-	// TODO: Caching App Shell Resource
+const { assets } = global.serviceWorkerOption;
+
+self.addEventListener('install', (event) => {
+	event.waitUntil(CacheHelper.cachingAppShell([...assets, './']));
 });
    
-self.addEventListener('activate', () => {
-	console.log('Activating Service Worker ...');
-   
-	// TODO: Delete old caches
+self.addEventListener('activate', (event) => {
+	event.waitUntil(CacheHelper.deleteOldCache());
 });
    
-self.addEventListener('fetch', () => {
-	console.log(event.request);
-   
-	event.respondWith(fetch(event.request));
-	// TODO: Add/get fetch request to/from caches
+self.addEventListener('fetch', (event) => {
+	event.respondWith(CacheHelper.revalidateCache(event.request));
 });

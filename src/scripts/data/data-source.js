@@ -1,4 +1,4 @@
-import API_ENDPOINT from "./api-endpoint";
+import API_ENDPOINT from "../globals/api-endpoint";
 
 class DataSource {
 	static async restaurantList() {

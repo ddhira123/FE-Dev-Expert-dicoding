@@ -1,7 +1,7 @@
-import DrawerInitiator from "../utils/drawer-initiator";
-import UrlParser from "../routes/url-parser";
-import routes from "../routes/routes";
-import { errorTemplate } from "./templates/template-builder";
+import DrawerInitiator from '../utils/drawer-initiator';
+import UrlParser from '../routes/url-parser';
+import routes from '../routes/routes';
+import { errorTemplate } from './templates/template-builder';
 
 class App {
 	constructor({ button, drawer, content }) {

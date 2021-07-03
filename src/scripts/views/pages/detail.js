@@ -1,7 +1,7 @@
-import DataSource from "../../data/data-source";
-import UrlParser from "../../routes/url-parser";
-import FavoriteButtonInitiator from "../../utils/favorite-button-initiator";
-import { createRestaurantDetailTemplate } from "../templates/template-builder";
+import DataSource from '../../data/data-source';
+import UrlParser from '../../routes/url-parser';
+import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
+import { createRestaurantDetailTemplate } from '../templates/template-builder';
 
 const Detail = {
 	async render() {

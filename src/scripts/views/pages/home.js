@@ -1,5 +1,5 @@
-import DataSource from "../../data/data-source";
-import { createRestaurantItemTemplate } from "../templates/template-builder";
+import DataSource from '../../data/data-source';
+import { createRestaurantItemTemplate } from '../templates/template-builder';
 
 const Home = {
 	async render() {
@@ -22,8 +22,8 @@ const Home = {
 
 	async afterRender() {
 		const restaurants = await DataSource.restaurantList();
-		const listElement = document.querySelector(".restaurants");
-		let innerList = "";
+		const listElement = document.querySelector('.restaurants');
+		let innerList = '';
 		restaurants.forEach(restaurant => {
 			innerList += createRestaurantItemTemplate(restaurant);
 		});

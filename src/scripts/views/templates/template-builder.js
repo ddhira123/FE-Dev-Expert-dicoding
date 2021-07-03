@@ -1,4 +1,4 @@
-import API_ENDPOINT from "../../globals/api-endpoint";
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 const createRestaurantItemTemplate = (restaurant) => `
     
@@ -52,7 +52,7 @@ const cuisineCategoryBadgeTemplate = category => `
 const menuItemsTemplate = menu => `<li>${menu.name}</li>`;
 
 const multiElementListBuilder = ({data, func}) => {
-	let result = "";
+	let result = '';
 	data.forEach(item => {
 		result += func(item);
 	});
@@ -180,16 +180,16 @@ const errorTemplate = async () => `
 `;
 
 const showLoading = (loader) => {
-	loader.classList.add("display");
+	loader.classList.add('display');
 
 	setTimeout(() => {
-		loader.classList.remove("display");
+		loader.classList.remove('display');
 	}, 2000);
 }
 
 // hiding loading 
 const hideLoading = (loader) => {
-	loader.classList.remove("display");
+	loader.classList.remove('display');
 }
 
 export {

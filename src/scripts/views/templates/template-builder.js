@@ -1,4 +1,4 @@
-import API_ENDPOINT from "../../globals/api-endpoint";
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 const createRestaurantItemTemplate = (restaurant) => `
     
@@ -52,7 +52,7 @@ const cuisineCategoryBadgeTemplate = category => `
 const menuItemsTemplate = menu => `<li>${menu.name}</li>`;
 
 const multiElementListBuilder = ({data, func}) => {
-	let result = "";
+	let result = '';
 	data.forEach(item => {
 		result += func(item);
 	});
@@ -65,7 +65,7 @@ const createFavoriteButtonTemplate = () => `
     </button>
     `;
        
-const createFavoritedButtonTemplate = () => `
+const createDeleteFromFavoriteButtonTemplate = () => `
     <button aria-label="hapus dari favorit" id="btn-favorite" class="liked">
         <i class="fa fa-lg fa-heart" aria-hidden="true"></i> Hapus dari Favorit
     </button>
@@ -78,7 +78,7 @@ const createFailedSaveAlert = (restaurantName) =>
 	alert(`Gagal Menyimpan Restoran ${restaurantName} ke Favorit.`);
 
 const createSuccessDeleteAlert = (restaurantName) => 
-	alert(`Berhasil Mennghapus Restoran ${restaurantName} dari Favorit.`);
+	alert(`Berhasil Menghapus Restoran ${restaurantName} dari Favorit.`);
 
 const createFailedDeleteAlert = (restaurantName) => 
 	alert(`Gagal Menghapus Restoran ${restaurantName} dari Favorit.`);
@@ -179,29 +179,14 @@ const errorTemplate = async () => `
     </div>
 `;
 
-const showLoading = (loader) => {
-	loader.classList.add("display");
-
-	setTimeout(() => {
-		loader.classList.remove("display");
-	}, 2000);
-}
-
-// hiding loading 
-const hideLoading = (loader) => {
-	loader.classList.remove("display");
-}
-
 export {
 	createRestaurantDetailTemplate, 
 	createRestaurantItemTemplate, 
 	createFavoriteButtonTemplate,
-	createFavoritedButtonTemplate,
+	createDeleteFromFavoriteButtonTemplate,
 	createFailedSaveAlert,
 	createSuccessSaveAlert,
 	createFailedDeleteAlert,
 	createSuccessDeleteAlert,
 	errorTemplate,
-	showLoading,
-	hideLoading
 };

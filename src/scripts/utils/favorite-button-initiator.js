@@ -2,7 +2,7 @@ import FavoriteRestaurantIdb from '../data/favorite-restaurant-idb';
 import { 
 	createFailedSaveAlert, 
 	createFavoriteButtonTemplate, 
-	createFavoritedButtonTemplate, 
+	createDeleteFromFavoriteButtonTemplate, 
 	createSuccessSaveAlert,
 	createFailedDeleteAlert,
 	createSuccessDeleteAlert
@@ -47,7 +47,7 @@ const FavoriteButtonInitiator = {
 	},
  
 	_renderFavorited() {
-		this._favoriteButtonContainer.innerHTML = createFavoritedButtonTemplate();
+		this._favoriteButtonContainer.innerHTML = createDeleteFromFavoriteButtonTemplate();
 
 		const favoriteButton = document.querySelector('#btn-favorite');
 		favoriteButton.addEventListener('click', async () => {

@@ -1,4 +1,4 @@
-import CacheHelper from "./utils/cache-helper";
+import CacheHelper from './utils/cache-helper';
 
 /* eslint-disable no-restricted-globals */
 const { assets } = global.serviceWorkerOption;

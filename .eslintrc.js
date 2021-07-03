@@ -3,6 +3,7 @@ module.exports = {
 		browser: true,
 		es2021: true,
 		node: true,
+		jasmine: true
 	},
 	extends: ['airbnb-base', 'eslint:recommended', 'prettier'],
 	plugins: ['prettier'],
@@ -11,23 +12,33 @@ module.exports = {
 		sourceType: 'module',
 	},
 	rules: {
-		'eqeqeq': ['error', 'allow-null'],
+		'eqeqeq': ['error', 'always', {'null': 'ignore'}],
 		'indent': ['warn', 'tab'],
-		'no-confusing-arrow': 0,
-		'no-console': 1,
-		'no-unused-vars': 2,
-		'no-use-before-define': 0,
-		'no-underscore-dangle': 0,
-		'import/imports-first': 0,
-		'import/newline-after-import': 0,
-		'import/no-dynamic-require': 0,
-		'import/no-extraneous-dependencies': 0,
-		'import/no-named-as-default': 0,
-		'import/no-unresolved': 2,
-		'newline-per-chained-call': 0,
-		'max-len': ["error", { 
-			"code": 100, 
-			"ignoreStrings": true, 
-			"ignoreComments": true }],
+		'no-alert': 'off',
+		'no-confusing-arrow': 'off',
+		'no-console': 'warn',
+		'no-unused-vars': 'error',
+		'no-use-before-define': 'off',
+		'no-underscore-dangle': 'off',
+		'import/imports-first': 'warn',
+		'import/newline-after-import': 'warn',
+		'import/no-dynamic-require': 'off',
+		'import/no-extraneous-dependencies': 'off',
+		'import/no-named-as-default': 'off',
+		'import/no-unresolved': 'error',
+		'newline-per-chained-call': 'off',
+		'max-len': ['error', { 
+			'code': 100, 
+			'ignoreStrings': true, 
+			'ignoreComments': true }],
+		'quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
 	},
+	'overrides': [
+		{
+		  'files': ['test/**/*Spec.js'], // Or *.test.js
+		  'rules': {
+				'no-undef': 'off'
+		  }
+		}
+	  ],
 };

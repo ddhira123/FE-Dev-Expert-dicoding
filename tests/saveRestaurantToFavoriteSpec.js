@@ -1,5 +1,5 @@
 import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
-import * as TestFactories from './helpers/testFactories';
+import TestFactories from './helpers/testFactories';
 
 
 describe('Saving a restaurant to Favorite', () => {

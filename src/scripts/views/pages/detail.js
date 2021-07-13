@@ -1,4 +1,5 @@
 import DataSource from '../../data/data-source';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import UrlParser from '../../routes/url-parser';
 import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
 import { createRestaurantDetailTemplate } from '../templates/template-builder';
@@ -15,6 +16,7 @@ const Detail = {
 		restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
 		FavoriteButtonInitiator.init({
 			favoriteButtonContainer: document.querySelector('.btn-favorite-container'),
+			favoriteRestaurants: FavoriteRestaurantIdb,
 			restaurant
 		});
 	},

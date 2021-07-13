@@ -3,18 +3,18 @@ import API_ENDPOINT from '../../globals/api-endpoint';
 const createRestaurantItemTemplate = (restaurant) => `
     
     <div class="card restaurant-item hoverable">
-        <a href="/#/detail/${restaurant.id}">
-            <div class="card-image">
+        <a href="/#/detail/${restaurant.id}" class="restaurant-item__link">
+            <div class="card-image restaurant-item__image">
                 <div class="card-badge">
                     <i class="fa fa-lg fa-map-marker" aria-hidden="true"></i>
-                    <span class="loc">${restaurant.city}</span>
+                    <span class="loc">${restaurant.city || '-'}</span>
                 </div>
                 <img 
                     src="${API_ENDPOINT.RESTO_PIC('medium', restaurant.pictureId)}" 
                     alt="Image of restaurant ${restaurant.name} in ${restaurant.city}">
             </div>
-            <div class="card-content">
-                <span class="card-title">${restaurant.name}</span>
+            <div class="card-content restaurant-item__content">
+                <span class="card-title restaurant-item__name">${restaurant.name || '-'}</span>
                 <div 
                     class="stars" 
                     style="--rating: ${restaurant.rating};" 
@@ -23,9 +23,9 @@ const createRestaurantItemTemplate = (restaurant) => `
                     alt="${restaurant.rating}/5.">
                 </div>
                 <span style="display:inline-block;margin-bottom:8px;">
-                    ${restaurant.rating}
+                    ${restaurant.rating || '-'}
                 </span>
-                <p class="ellipsis">${restaurant.description}</p>
+                <p class="ellipsis">${restaurant.description || '-'}</p>
             </div>
         </a>
     </div>`;
@@ -60,13 +60,13 @@ const multiElementListBuilder = ({data, func}) => {
 } 
 
 const createFavoriteButtonTemplate = () => `
-    <button aria-label="simpan ke favorit" id="btn-favorite" class="like">
+    <button aria-label="simpan ke favorit" id="btn-favorite" class="favorite">
         <i class="fa fa-lg fa-heart-o" aria-hidden="true"></i> Simpan ke Favorit
     </button>
     `;
        
 const createDeleteFromFavoriteButtonTemplate = () => `
-    <button aria-label="hapus dari favorit" id="btn-favorite" class="liked">
+    <button aria-label="hapus dari favorit" id="btn-favorite" class="favorited">
         <i class="fa fa-lg fa-heart" aria-hidden="true"></i> Hapus dari Favorit
     </button>
     `;
@@ -84,7 +84,7 @@ const createFailedDeleteAlert = (restaurantName) =>
 	alert(`Gagal Menghapus Restoran ${restaurantName} dari Favorit.`);
 
 const createRestaurantDetailTemplate = (restaurant) => {
-	console.log(restaurant);
+	// console.log(restaurant);
 	const cuisines = multiElementListBuilder({
 		data: restaurant.categories, 
 		func: cuisineCategoryBadgeTemplate
@@ -101,7 +101,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
 		data: restaurant.menus.drinks,
 		func:menuItemsTemplate
 	});
-	const fullAddress = `${restaurant.address}, ${restaurant.city}`;
+	const fullAddress = `${restaurant.address || '-'}, ${restaurant.city || '-'}`;
 	return `
         <img 
             class="restaurant-detail__banner" 
@@ -109,8 +109,8 @@ const createRestaurantDetailTemplate = (restaurant) => {
         <div class="restaurant-detail__wrapper">
             <div class="restaurant-detail__overview">
                 <div class="restaurant-detail__overview__left">
-                    <h1>${restaurant.name}</h1>
-                    <p>${fullAddress}</p>
+                    <h1>${restaurant.name || '-'}</h1>
+                    <p>${fullAddress || '-'}</p>
                 </div>
                 
                 <div class="restaurant-detail__overview__right">
@@ -122,7 +122,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
                         aria-label="Rating restoran ini adalah ${restaurant.rating} per 5." 
                         alt="${restaurant.rating}/5">
                     </div>
-                    <span class="rating-number">${restaurant.rating}</span>
+                    <span class="rating-number">${restaurant.rating || '-'}</span>
                     <div class="btn-favorite-container"></div>
                 </div>
                 <div class="restaurant-detail__cuisines">

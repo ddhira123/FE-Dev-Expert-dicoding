@@ -1,4 +1,3 @@
-import FavoriteRestaurantIdb from '../data/favorite-restaurant-idb';
 import { 
 	createFailedSaveAlert, 
 	createFavoriteButtonTemplate, 
@@ -9,9 +8,14 @@ import {
 } from '../views/templates/template-builder';
  
 const FavoriteButtonInitiator = {
-	async init({ favoriteButtonContainer, restaurant }) {
+	async init({ 
+		favoriteButtonContainer, 
+		favoriteRestaurants, 
+		restaurant 
+	}) {
 		this._favoriteButtonContainer = favoriteButtonContainer;
 		this._restaurant = restaurant;
+		this._favoriteRestaurants = favoriteRestaurants;
  
 		await this._renderButton();
 	},
@@ -27,7 +31,7 @@ const FavoriteButtonInitiator = {
 	},
  
 	async _isRestaurantExist(id) {
-		const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
+		const restaurant = await this._favoriteRestaurants.getRestaurant(id);
 		return !!restaurant;
 	},
  
@@ -37,7 +41,7 @@ const FavoriteButtonInitiator = {
 		const favoriteButton = document.querySelector('#btn-favorite');
 		favoriteButton.addEventListener('click', async () => {
 			try {
-				await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
+				await this._favoriteRestaurants.putRestaurant(this._restaurant);
 				createSuccessSaveAlert(this._restaurant.name);
 			} catch (error) {
 				createFailedSaveAlert(this._restaurant.name);
@@ -52,7 +56,7 @@ const FavoriteButtonInitiator = {
 		const favoriteButton = document.querySelector('#btn-favorite');
 		favoriteButton.addEventListener('click', async () => {
 			try {
-				await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
+				await this._favoriteRestaurants.deleteRestaurant(this._restaurant.id);
 				createSuccessDeleteAlert(this._restaurant.name);
 			} catch (error) {
 				createFailedDeleteAlert(this._restaurant.name);

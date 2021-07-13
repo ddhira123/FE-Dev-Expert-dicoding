@@ -3,10 +3,11 @@ module.exports = {
 		browser: true,
 		es2021: true,
 		node: true,
-		jasmine: true
+		jasmine: true,
+		'codeceptjs/codeceptjs': true
 	},
 	extends: ['airbnb-base', 'eslint:recommended', 'prettier'],
-	plugins: ['prettier'],
+	plugins: ['prettier', 'codeceptjs'],
 	parserOptions: {
 		ecmaVersion: 12,
 		sourceType: 'module',
@@ -27,13 +28,15 @@ module.exports = {
 		'import/no-named-as-default': 'off',
 		'import/no-unresolved': 'error',
 		'newline-per-chained-call': 'off',
+		'no-new': 'off',
+		'no-prototype-builtins': 'off',
 		'max-len': ['error', { 
 			'code': 100, 
 			'ignoreStrings': true, 
 			'ignoreComments': true }],
 		'quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
 	},
-	'overrides': [
+	overrides: [
 		{
 		  'files': ['test/**/*Spec.js'], // Or *.test.js
 		  'rules': {

@@ -10,7 +10,7 @@ const createRestaurantItemTemplate = (restaurant) => `
                     <span class="loc">${restaurant.city || '-'}</span>
                 </div>
                 <img 
-                    src="${API_ENDPOINT.RESTO_PIC('medium', restaurant.pictureId)}" 
+                    src="${API_ENDPOINT.RESTO_PIC('small', restaurant.pictureId)}" 
                     alt="Image of restaurant ${restaurant.name} in ${restaurant.city}">
             </div>
             <div class="card-content restaurant-item__content">
@@ -103,9 +103,13 @@ const createRestaurantDetailTemplate = (restaurant) => {
 	});
 	const fullAddress = `${restaurant.address || '-'}, ${restaurant.city || '-'}`;
 	return `
-        <img 
-            class="restaurant-detail__banner" 
-            src="${API_ENDPOINT.RESTO_PIC('large', restaurant.pictureId)}">
+        <picture class="restaurant-detail__banner">
+            <source media="(min-width: 993px)" srcset="${API_ENDPOINT.RESTO_PIC('large', restaurant.pictureId)}" >
+            <source media="(max-width: 992px)" srcset="${API_ENDPOINT.RESTO_PIC('medium', restaurant.pictureId)}" >
+            <source media="(max-width: 600px)" srcset="${API_ENDPOINT.RESTO_PIC('small', restaurant.pictureId)}" >
+            <img 
+                src="${API_ENDPOINT.RESTO_PIC('large', restaurant.pictureId)}">
+        </picture>
         <div class="restaurant-detail__wrapper">
             <div class="restaurant-detail__overview">
                 <div class="restaurant-detail__overview__left">

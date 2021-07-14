@@ -10,7 +10,7 @@ Scenario('showing no data in favorite', ({ I }) => {
 	I.see('Tidak ada Restoran untuk ditampilkan.', '.no-data');
 });
 
-Scenario('liking one movie', async ({ I }) => {
+Scenario('saving restaurant to favorite', async ({ I }) => {
 	I.see('Tidak ada Restoran untuk ditampilkan.', '.no-data');
    
 	I.amOnPage('/');

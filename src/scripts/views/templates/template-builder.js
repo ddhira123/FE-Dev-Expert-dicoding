@@ -9,8 +9,9 @@ const createRestaurantItemTemplate = (restaurant) => `
                     <i class="fa fa-lg fa-map-marker" aria-hidden="true"></i>
                     <span class="loc">${restaurant.city || '-'}</span>
                 </div>
-                <img 
-                    src="${API_ENDPOINT.RESTO_PIC('small', restaurant.pictureId)}" 
+                <img
+                    class="lazyload" 
+                    data-src="${API_ENDPOINT.RESTO_PIC('small', restaurant.pictureId)}" 
                     alt="Image of restaurant ${restaurant.name} in ${restaurant.city}">
             </div>
             <div class="card-content restaurant-item__content">
@@ -108,7 +109,8 @@ const createRestaurantDetailTemplate = (restaurant) => {
             <source media="(max-width: 992px)" srcset="${API_ENDPOINT.RESTO_PIC('medium', restaurant.pictureId)}" >
             <source media="(max-width: 600px)" srcset="${API_ENDPOINT.RESTO_PIC('small', restaurant.pictureId)}" >
             <img 
-                src="${API_ENDPOINT.RESTO_PIC('large', restaurant.pictureId)}">
+                class="lazyload" 
+                data-src="${API_ENDPOINT.RESTO_PIC('large', restaurant.pictureId)}">
         </picture>
         <div class="restaurant-detail__wrapper">
             <div class="restaurant-detail__overview">

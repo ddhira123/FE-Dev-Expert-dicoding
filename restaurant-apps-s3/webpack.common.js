@@ -94,9 +94,6 @@ module.exports = {
 		}),
 		new CleanWebpackPlugin(),
 		// To analyze Bundle, do build and start, then open localhost:8888
-		new BundleAnalyzerPlugin({
-			analyzerMode: 'static', 
-			openAnalyzer: false
-	  	}),
+		new BundleAnalyzerPlugin(),
 	],
 };

@@ -17,7 +17,7 @@ module.exports = {
 		'indent': ['warn', 'tab'],
 		'no-alert': 'off',
 		'no-confusing-arrow': 'off',
-		'no-console': 'off',
+		'no-console': 'warn',
 		'no-unused-vars': 'error',
 		'no-use-before-define': 'off',
 		'no-underscore-dangle': 'off',

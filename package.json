@@ -8,7 +8,7 @@
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:image": "node sharp.js",
-    "deploy": "gh-pages --branch gh-page -d dist",
+    "deploy": "rimraf node_modules/.cache/gh-pages && gh-pages --branch gh-page -d dist",
     "start": "node server.js",
     "e2e": "codeceptjs run --steps",
     "lint": "eslint ./src --no-fix",
